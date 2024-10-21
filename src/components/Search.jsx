@@ -20,7 +20,7 @@ function Search() {
       <input
         type="text"
         placeholder="Enter Your City"
-        className="p-2 rounded-md w-full max-w-md "
+        className="p-2 rounded-md w-full max-w-md my-8"
         onChange={handleChange}
         onKeyPress={keyPress}
         value={input}
