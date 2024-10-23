@@ -34,7 +34,7 @@ function WeatherDisplay({city}) {
 
   return (
     <div className="flex justify-center items-center min-h-screen ">
-      <div className="p-6 w-80 bg-gray-800 text-white rounded-lg shadow-xl">
+      <div className="p-4 w-96 h-60 bg-gray-800 text-white rounded-lg shadow-xl">
         {weather ? (
           <div className="flex justify-between">
             <div className="flex flex-col justify-between">
@@ -46,7 +46,7 @@ function WeatherDisplay({city}) {
               </div>
               <div className="mt-4">
                 <p className="text-6xl font-bold">
-                  {Math.round(weather.main.temp)}°C
+                  {Math.round(weather.temp)}°C
                 </p>
               </div>
             </div>
@@ -56,7 +56,7 @@ function WeatherDisplay({city}) {
               </div>
               <div className="text-sm space-y-2 text-right">
                 <p>Humidity: {weather.main.humidity}%</p>
-                <p>Wind: {Math.round(weather.wind.speed0)} m/s</p>
+                <p>Wind: {Math.round(weather.wind.speed)} m/s</p>
               </div>
             </div>
           </div>
