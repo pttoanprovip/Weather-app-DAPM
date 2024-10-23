@@ -27,15 +27,18 @@ function WeatherDisplay({city}) {
   if (!weather.weather || weather.weather.length === 0) {
     return (
       <p className="text-center">
-        Weather data is not available for this city.
+          Please enter your city
       </p>
     );
   }
 
+  // function getCurentDay(){
+  //   const newday = new Date().toLocaleDateString();
+  // }
+
   return (
     <div className="flex justify-center items-center min-h-screen ">
-      <div className="p-4 w-96 h-60 bg-gray-800 text-white rounded-lg shadow-xl">
-        {weather ? (
+      <div className="p-4 w-3/6 h-72 bg-gray-800 text-white rounded-lg shadow-xl">
           <div className="flex justify-between">
             <div className="flex flex-col justify-between">
               <div className="mb-4">
@@ -43,10 +46,11 @@ function WeatherDisplay({city}) {
                 <p className="text-sm capitalize">
                   {weather.weather[0].description}
                 </p>
+                {/* <p>{getCurentDay}</p> */}
               </div>
               <div className="mt-4">
                 <p className="text-6xl font-bold">
-                  {Math.round(weather.temp)}°C
+                  {Math.floor(weather.main.temp - 273.15)}°C
                 </p>
               </div>
             </div>
@@ -60,9 +64,6 @@ function WeatherDisplay({city}) {
               </div>
             </div>
           </div>
-        ) : (
-          <p className="text-center">Please enter your city</p>
-        )}
       </div>
     </div>
   );
