@@ -33,7 +33,7 @@ function WeatherDisplay({city}) {
   }
 
   return (
-    <div className="flex justify-center items-center min-h-screen">
+    <div className="flex justify-center items-center min-h-screen ">
       <div className="p-6 w-80 bg-gray-800 text-white rounded-lg shadow-xl">
         {weather ? (
           <div className="flex justify-between">
