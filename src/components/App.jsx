@@ -12,7 +12,6 @@ function App() {
 
   return (
     <div >
-      
       <Search onSearch={handleSearch} />
       <WeatherDisplay city={city} />
     </div>

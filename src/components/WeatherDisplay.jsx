@@ -1,6 +1,7 @@
 /* eslint-disable react/prop-types */
 import { useEffect, useState } from "react";
 import "./styles.css";
+import ForecastDisplay from "./ForecastDisplay";
 
 function WeatherDisplay({city}) {
   const [weather, setWeather] = useState(null);
@@ -32,9 +33,10 @@ function WeatherDisplay({city}) {
     );
   }
 
-  // function getCurentDay(){
-  //   const newday = new Date().toLocaleDateString();
-  // }
+  function getCurrentDate(){
+    const currentdate = new Date().toLocaleDateString();
+    return currentdate;
+  }
 
   return (
     <div className="flex justify-center items-center min-h-screen ">
@@ -46,17 +48,17 @@ function WeatherDisplay({city}) {
                 <p className="text-sm capitalize">
                   {weather.weather[0].description}
                 </p>
-                {/* <p>{getCurentDay}</p> */}
+                <p>{getCurrentDate()}</p>
               </div>
-              <div className="mt-4">
-                <p className="text-6xl font-bold">
+              <div className="mt-6 top-10">
+                <p className="text-6xl font-bold ">
                   {Math.floor(weather.main.temp - 273.15)}°C
                 </p>
               </div>
             </div>
             <div className="flex flex-col justify-between items-end">
               <div className="w-16 h-16 bg-gray-600 rounded-full mb-4">
-                <p>hello</p>
+                <img src="../images/sun.jpg" className="rounded-full"/>
               </div>
               <div className="text-sm space-y-2 text-right">
                 <p>Humidity: {weather.main.humidity}%</p>
@@ -64,6 +66,9 @@ function WeatherDisplay({city}) {
               </div>
             </div>
           </div>
+      </div>
+      <div>
+        <ForecastDisplay/ >
       </div>
     </div>
   );
