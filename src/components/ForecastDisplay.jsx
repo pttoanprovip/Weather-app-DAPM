@@ -27,7 +27,7 @@ function ForecastDisplay({ city }) {
   return (
     <div className="flex space-x-4 mt-4">
       {forecast.map((day, index) => (
-        <div className="text-center bg-gray-300 p-4 w-25 rounded-md" key={index}>
+        <div className="text-center bg-gray-300 p-4 w-28 rounded-md" key={index}>
           <h3>{new Date(day.dt_txt).toLocaleDateString()}</h3>
           <p>{Math.round(day.main.temp - 273.15)}°C</p>
           <p>{day.weather[0].description}</p>

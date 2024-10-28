@@ -7,7 +7,7 @@ function WeatherDisplay({ city }) {
   const [weather, setWeather] = useState(null);
   const [isCelsius, setIsCelsius] = useState(true);
   useEffect(() => {
-    if(!city) return;
+    if (!city) return;
     const featchWeather = async () => {
       const API_Key = "01806323009c06702ba3db6c70d586c5";
       const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_Key}`;
@@ -56,6 +56,17 @@ function WeatherDisplay({ city }) {
     }
   }
 
+  function getImage() {
+    const description = weather.weather[0].description.toLowerCase();
+    if (description.includes("sun")) {
+      return "/images/sun.jpg";
+    } else if (description.includes("rain")) {
+      return "/images/rain.jpg";
+    } else if (description.includes("cloud")) {
+      return "/images/cloud.avif";
+    }
+  }
+
   return (
     <div className="flex justify-center items-center min-h-screen flex-col">
       <div className="p-4 w-3/6 h-72 bg-gray-800 text-white rounded-lg shadow-xl">
@@ -77,7 +88,7 @@ function WeatherDisplay({ city }) {
           </div>
           <div className="flex flex-col justify-between items-end">
             <div className="w-16 h-16 bg-gray-600 rounded-full mb-4">
-              <img src="../images/sun.jpg" className="rounded-fulld" />
+              <img src={getImage()} className="rounded-fulld" />
             </div>
             <div className="text-sm space-y-2 text-right">
               <p>Humidity: {weather.main.humidity}%</p>
@@ -87,7 +98,7 @@ function WeatherDisplay({ city }) {
         </div>
       </div>
       <div>
-        <ForecastDisplay city={city}/>
+        <ForecastDisplay city={city} />
       </div>
     </div>
   );
