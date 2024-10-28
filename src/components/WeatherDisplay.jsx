@@ -24,7 +24,7 @@ function WeatherDisplay({ city }) {
   }, [city]);
 
   if (!weather) {
-    return <p className="text-center">Please</p>;
+    return <p className="text-center">Please....</p>;
   }
 
   if (!weather.weather || weather.weather.length === 0) {
