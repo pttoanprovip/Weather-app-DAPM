@@ -7,6 +7,7 @@ function WeatherDisplay({ city }) {
   const [weather, setWeather] = useState(null);
   const [isCelsius, setIsCelsius] = useState(true);
   useEffect(() => {
+    if(!city) return;
     const featchWeather = async () => {
       const API_Key = "01806323009c06702ba3db6c70d586c5";
       const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_Key}`;
@@ -40,7 +41,7 @@ function WeatherDisplay({ city }) {
   }
 
   function convertFahrenheit() {
-    return Math.floor((convertCelsius() * (9 / 5) )+ 32);
+    return Math.floor(convertCelsius() * (9 / 5) + 32);
   }
 
   function handleChangeCelsius() {
@@ -56,7 +57,7 @@ function WeatherDisplay({ city }) {
   }
 
   return (
-    <div className="flex justify-center items-center min-h-screen ">
+    <div className="flex justify-center items-center min-h-screen flex-col">
       <div className="p-4 w-3/6 h-72 bg-gray-800 text-white rounded-lg shadow-xl">
         <div className="flex justify-between">
           <div className="flex flex-col justify-between">
@@ -67,10 +68,10 @@ function WeatherDisplay({ city }) {
               </p>
               <p>{getCurrentDate()}</p>
             </div>
-            <div className="mt-6 top-10">
+            <div className="mt-6 top-10 flex flex-row">
               <p className="text-6xl font-bold">{renderTemperature()}</p>
               <p className="text-3xl font-bold " onClick={handleChangeCelsius}>
-                {isCelsius ? "°C" : "°F"} || {isCelsius ? "°F" : "°C"}
+                {isCelsius ? "°C" : "°F"} | {isCelsius ? "°F" : "°C"}
               </p>
             </div>
           </div>
@@ -86,7 +87,7 @@ function WeatherDisplay({ city }) {
         </div>
       </div>
       <div>
-        <ForecastDisplay />
+        <ForecastDisplay city={city}/>
       </div>
     </div>
   );
